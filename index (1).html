@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalcNova — Free Online Scientific Calculator | Fast, Accurate, No Login</title>
+<meta name="description" content="CalcNova is a free online scientific calculator for trigonometry, logarithms, exponents, roots, and more. Solve math problems instantly in your browser — no download, no signup, works on mobile.">
+<meta name="keywords" content="scientific calculator, online calculator, free calculator, math calculator, trigonometry calculator, log calculator, square root calculator, calculator website, calculator tool, CalcNova, algebra calculator, exponent calculator, sin cos tan calculator">
+<meta name="author" content="CalcNova">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://calcnova.example.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="CalcNova — Free Online Scientific Calculator">
+<meta property="og:description" content="Solve trigonometry, logarithms, exponents and more with CalcNova, the fast free online scientific calculator. No signup required.">
+<meta property="og:url" content="https://calcnova.example.com/">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CalcNova — Free Online Scientific Calculator">
+<meta name="twitter:description" content="Fast, accurate, free scientific calculator. Works right in your browser.">
+
+<!-- Structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CalcNova",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "A free online scientific calculator supporting trigonometry, logarithms, powers, roots and more."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is CalcNova free to use?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. CalcNova is completely free, works in your browser, and requires no signup or download." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does CalcNova work on mobile phones?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. CalcNova is fully responsive and works on phones, tablets, and desktops." }
+    },
+    {
+      "@type": "Question",
+      "name": "What functions does the scientific calculator support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CalcNova supports basic arithmetic, trigonometric functions (sin, cos, tan), logarithms, square roots, powers, factorials, and constants like pi and e." }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg-deep:#0a0e2a;
+    --bg-deep2:#120a2e;
+    --violet:#7b2ff7;
+    --cyan:#00e5ff;
+    --pink:#ff2e92;
+    --amber:#ffb800;
+    --glass:rgba(255,255,255,0.06);
+    --glass-border:rgba(255,255,255,0.14);
+    --text-hi:#f4f2ff;
+    --text-lo:#b4aed6;
+    --font-display:'Space Grotesk',system-ui,sans-serif;
+    --font-body:'Inter',system-ui,sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:
+      radial-gradient(circle at 15% 10%, rgba(123,47,247,0.35), transparent 45%),
+      radial-gradient(circle at 85% 20%, rgba(0,229,255,0.25), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(255,46,146,0.2), transparent 45%),
+      linear-gradient(180deg, var(--bg-deep), var(--bg-deep2));
+    color:var(--text-hi);
+    font-family:var(--font-body);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  @font-face{
+    font-family:'Space Grotesk';
+    src:local('Space Grotesk');
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    backdrop-filter:blur(14px);
+    background:rgba(10,14,42,0.6);
+    border-bottom:1px solid var(--glass-border);
+  }
+  nav{
+    max-width:1200px;margin:0 auto;padding:18px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--font-display);font-weight:700;font-size:1.4rem;
+    letter-spacing:0.5px;
+    background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .nav-links{display:flex;gap:28px;font-size:0.95rem;color:var(--text-lo);}
+  .nav-links a:hover{color:var(--cyan);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    max-width:1200px;margin:0 auto;
+    padding:70px 28px 40px;
+    display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-block;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--amber);border:1px solid rgba(255,184,0,0.4);
+    padding:5px 12px;border-radius:999px;margin-bottom:20px;
+  }
+  h1{
+    font-family:var(--font-display);font-size:3.1rem;line-height:1.08;font-weight:700;
+    margin-bottom:20px;
+  }
+  h1 span{
+    background:linear-gradient(90deg,var(--cyan),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{color:var(--text-lo);font-size:1.1rem;max-width:480px;margin-bottom:30px;}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-display);font-weight:600;font-size:0.95rem;
+    padding:14px 26px;border-radius:12px;cursor:pointer;border:none;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,var(--violet),var(--pink));
+    color:#fff;box-shadow:0 8px 24px rgba(255,46,146,0.35);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(255,46,146,0.5);}
+  .btn-ghost{
+    background:transparent;border:1px solid var(--glass-border);color:var(--text-hi);
+  }
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+
+  /* ---------- 3D CALCULATOR ---------- */
+  .calc-stage{perspective:1400px;display:flex;justify-content:center;}
+  .calc-card{
+    width:340px;
+    background:linear-gradient(160deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+    border:1px solid var(--glass-border);
+    border-radius:26px;
+    padding:20px;
+    backdrop-filter:blur(18px);
+    box-shadow:
+      0 40px 80px rgba(0,0,0,0.55),
+      0 0 60px rgba(123,47,247,0.25),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+    transform:rotateY(-14deg) rotateX(6deg);
+    transition:transform .5s ease;
+  }
+  .calc-stage:hover .calc-card{transform:rotateY(-4deg) rotateX(2deg);}
+
+  .calc-display{
+    background:rgba(0,0,0,0.4);
+    border-radius:16px;
+    padding:18px 16px;
+    margin-bottom:16px;
+    text-align:right;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:inset 0 2px 8px rgba(0,0,0,0.6);
+  }
+  #calc-history{font-size:0.85rem;color:var(--text-lo);min-height:18px;overflow-x:auto;white-space:nowrap;}
+  #calc-result{
+    font-family:var(--font-display);font-size:2rem;font-weight:700;
+    color:var(--text-hi);overflow-x:auto;white-space:nowrap;
+  }
+
+  .calc-mode-row{display:flex;justify-content:space-between;margin-bottom:12px;}
+  .mode-btn{
+    font-size:0.72rem;padding:6px 10px;border-radius:8px;
+    background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);
+    color:var(--text-lo);cursor:pointer;
+  }
+  .mode-btn.active{background:rgba(0,229,255,0.18);color:var(--cyan);border-color:var(--cyan);}
+
+  .calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .calc-grid.basic-only{grid-template-columns:repeat(4,1fr);}
+  .key{
+    padding:14px 0;border-radius:12px;border:none;cursor:pointer;
+    font-family:var(--font-display);font-size:0.95rem;font-weight:600;
+    background:rgba(255,255,255,0.08);color:var(--text-hi);
+    box-shadow:0 3px 0 rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1);
+    transition:transform .08s ease, box-shadow .08s ease;
+  }
+  .key:active{transform:translateY(3px);box-shadow:0 0 0 rgba(0,0,0,0.35);}
+  .key.op{background:rgba(123,47,247,0.35);color:#fff;}
+  .key.fn{background:rgba(0,229,255,0.16);color:var(--cyan);font-size:0.8rem;}
+  .key.eq{background:linear-gradient(90deg,var(--pink),var(--violet));color:#fff;grid-column:span 2;}
+  .key.clear{background:rgba(255,46,146,0.25);color:var(--pink);}
+
+  /* ---------- SECTIONS ---------- */
+  section{max-width:1100px;margin:0 auto;padding:70px 28px;}
+  .section-title{
+    font-family:var(--font-display);font-size:2rem;font-weight:700;margin-bottom:14px;
+  }
+  .section-sub{color:var(--text-lo);max-width:600px;margin-bottom:44px;line-height:1.6;}
+
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .feature-card{
+    background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;
+    padding:26px;transition:transform .2s ease, border-color .2s ease;
+  }
+  .feature-card:hover{transform:translateY(-6px);border-color:var(--cyan);}
+  .feature-icon{
+    width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;margin-bottom:16px;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+  }
+  .feature-card h3{font-family:var(--font-display);font-size:1.1rem;margin-bottom:8px;}
+  .feature-card p{color:var(--text-lo);font-size:0.92rem;line-height:1.55;}
+
+  .steps{counter-reset:step;display:flex;flex-direction:column;gap:0;}
+  .step{
+    display:grid;grid-template-columns:60px 1fr;gap:20px;padding:22px 0;
+    border-bottom:1px solid var(--glass-border);
+  }
+  .step:last-child{border-bottom:none;}
+  .step-num{
+    counter-increment:step;font-family:var(--font-display);font-weight:700;font-size:1.4rem;
+    color:var(--cyan);opacity:0.8;
+  }
+  .step h4{font-family:var(--font-display);margin-bottom:6px;font-size:1.05rem;}
+  .step p{color:var(--text-lo);font-size:0.92rem;line-height:1.6;}
+
+  .faq{display:flex;flex-direction:column;gap:14px;}
+  .faq-item{
+    background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:20px 22px;
+  }
+  .faq-item summary{cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:1rem;list-style:none;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';float:right;color:var(--amber);font-size:1.2rem;}
+  .faq-item[open] summary::after{content:'–';}
+  .faq-item p{color:var(--text-lo);margin-top:12px;font-size:0.92rem;line-height:1.6;}
+
+  footer{
+    border-top:1px solid var(--glass-border);padding:36px 28px;text-align:center;
+    color:var(--text-lo);font-size:0.85rem;
+  }
+
+  @media(max-width:880px){
+    .hero{grid-template-columns:1fr;padding-top:40px;}
+    h1{font-size:2.2rem;}
+    .calc-stage{margin-top:20px;}
+    .calc-card{transform:none;}
+    .feature-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">CalcNova</div>
+    <div class="nav-links">
+      <a href="#calculator">Calculator</a>
+      <a href="#features">Features</a>
+      <a href="#howto">How To Use</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="calculator">
+  <div>
+    <span class="eyebrow">Free • No Signup • Instant</span>
+    <h1>The <span>scientific calculator</span> that lives in your browser.</h1>
+    <p class="lead">CalcNova solves trigonometry, logarithms, powers, roots and everyday arithmetic instantly — no app to install, no account to create. Just open the tab and calculate.</p>
+    <div class="cta-row">
+      <button class="btn btn-primary" onclick="document.getElementById('calc-input').focus()">Start Calculating</button>
+      <a href="#howto" class="btn btn-ghost">How It Works</a>
+    </div>
+  </div>
+
+  <div class="calc-stage">
+    <div class="calc-card">
+      <div class="calc-display">
+        <div id="calc-history">&nbsp;</div>
+        <div id="calc-result">0</div>
+      </div>
+
+      <div class="calc-mode-row">
+        <button class="mode-btn active" id="mode-basic" onclick="setMode('basic')">BASIC</button>
+        <button class="mode-btn" id="mode-sci" onclick="setMode('sci')">SCIENTIFIC</button>
+        <button class="mode-btn" id="mode-deg">DEG</button>
+      </div>
+
+      <div id="sci-row" class="calc-grid" style="margin-bottom:8px; display:none;">
+        <button class="key fn" onclick="calcFn('sin(')">sin</button>
+        <button class="key fn" onclick="calcFn('cos(')">cos</button>
+        <button class="key fn" onclick="calcFn('tan(')">tan</button>
+        <button class="key fn" onclick="calcFn('log(')">log</button>
+        <button class="key fn" onclick="calcFn('ln(')">ln</button>
+        <button class="key fn" onclick="calcFn('sqrt(')">√</button>
+        <button class="key fn" onclick="calcFn('^')">x^y</button>
+        <button class="key fn" onclick="calcFn('!')">n!</button>
+        <button class="key fn" onclick="calcFn('pi')">π</button>
+        <button class="key fn" onclick="calcFn('e')">e</button>
+      </div>
+
+      <div class="calc-grid">
+        <button class="key clear" onclick="calcClear()">AC</button>
+        <button class="key clear" onclick="calcBack()">⌫</button>
+        <button class="key op" onclick="calcFn('(')">(</button>
+        <button class="key op" onclick="calcFn(')')">)</button>
+        <button class="key op" onclick="calcFn('/')">÷</button>
+
+        <button class="key" onclick="calcFn('7')">7</button>
+        <button class="key" onclick="calcFn('8')">8</button>
+        <button class="key" onclick="calcFn('9')">9</button>
+        <button class="key op" onclick="calcFn('*')">×</button>
+        <button class="key op" onclick="calcFn('%')">%</button>
+
+        <button class="key" onclick="calcFn('4')">4</button>
+        <button class="key" onclick="calcFn('5')">5</button>
+        <button class="key" onclick="calcFn('6')">6</button>
+        <button class="key op" onclick="calcFn('-')">−</button>
+        <button class="key op" onclick="calcFn('+')" style="grid-row:span 2;">+</button>
+
+        <button class="key" onclick="calcFn('1')">1</button>
+        <button class="key" onclick="calcFn('2')">2</button>
+        <button class="key" onclick="calcFn('3')">3</button>
+        <button class="key" onclick="calcFn('0')" style="grid-column:span 1;">0</button>
+
+        <button class="key" onclick="calcFn('0')">0</button>
+        <button class="key" onclick="calcFn('.')">.</button>
+        <button class="key eq" onclick="calcEquals()">=</button>
+      </div>
+      <input id="calc-input" style="position:absolute;opacity:0;pointer-events:none;" />
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <h2 class="section-title">Built for real math, not just addition.</h2>
+  <p class="section-sub">CalcNova combines everyday arithmetic with the scientific functions students, engineers, and professionals actually need.</p>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">∑</div>
+      <h3>Trigonometry Built In</h3>
+      <p>Compute sin, cos, and tan instantly in degrees — perfect for geometry, physics, and engineering problems.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">log</div>
+      <h3>Logarithms &amp; Exponents</h3>
+      <p>Switch between log base 10, natural log, powers, and roots without hunting for a second app.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Instant, In-Browser</h3>
+      <p>No downloads, no page reloads. Every calculation runs the moment you type, right in your browser tab.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Works On Any Device</h3>
+      <p>CalcNova adapts to phones, tablets, and desktops, so your calculator is always in your pocket.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Private By Design</h3>
+      <p>Your calculations stay on your device. Nothing is uploaded, tracked, or stored on a server.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🆓</div>
+      <h3>Completely Free</h3>
+      <p>No subscriptions, no ads blocking your screen, no premium tier. CalcNova is free for everyone, always.</p>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2 class="section-title">How to use CalcNova</h2>
+  <p class="section-sub">Three steps between you and your answer.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <h4>Pick a mode</h4>
+        <p>Choose Basic for everyday arithmetic, or Scientific to unlock trigonometry, logarithms, powers, and roots.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <h4>Enter your expression</h4>
+        <p>Tap the keys to build your calculation, for example 2 + 2, or sin(30) for scientific functions.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <h4>Press equals</h4>
+        <p>Hit the = key and CalcNova instantly shows the result. Use AC to clear or ⌫ to remove your last entry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2 class="section-title">Frequently asked questions</h2>
+  <div class="faq">
+    <details class="faq-item" open>
+      <summary>Is CalcNova free to use?</summary>
+      <p>Yes. CalcNova is completely free, works in your browser, and requires no signup or download.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Does CalcNova work on mobile phones?</summary>
+      <p>Yes. CalcNova is fully responsive and works smoothly on phones, tablets, and desktops.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What functions does the scientific calculator support?</summary>
+      <p>CalcNova supports basic arithmetic, trigonometric functions (sin, cos, tan), logarithms, square roots, powers, factorials, and constants like pi and e.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is my data stored anywhere?</summary>
+      <p>No. All calculations run locally in your browser. CalcNova doesn't store or transmit your inputs.</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  © 2026 CalcNova. Built for anyone who needs an answer fast.
+</footer>
+
+<script>
+  let expr = "";
+  let mode = "basic";
+
+  function setMode(m){
+    mode = m;
+    document.getElementById('mode-basic').classList.toggle('active', m==='basic');
+    document.getElementById('mode-sci').classList.toggle('active', m==='sci');
+    document.getElementById('sci-row').style.display = m === 'sci' ? 'grid' : 'none';
+  }
+
+  function updateDisplay(){
+    document.getElementById('calc-history').textContent = expr || '\u00a0';
+  }
+
+  function calcFn(val){
+    expr += val;
+    updateDisplay();
+  }
+
+  function calcClear(){
+    expr = "";
+    document.getElementById('calc-result').textContent = "0";
+    updateDisplay();
+  }
+
+  function calcBack(){
+    expr = expr.slice(0, -1);
+    updateDisplay();
+  }
+
+  function factorial(n){
+    n = Math.round(n);
+    if(n < 0) return NaN;
+    let r = 1;
+    for(let i=2;i<=n;i++) r *= i;
+    return r;
+  }
+
+  function calcEquals(){
+    if(!expr){ return; }
+    try{
+      let safe = expr
+        .replace(/\^/g, '**')
+        .replace(/sin\(/g, 'Math.sin((Math.PI/180)*')
+        .replace(/cos\(/g, 'Math.cos((Math.PI/180)*')
+        .replace(/tan\(/g, 'Math.tan((Math.PI/180)*')
+        .replace(/ln\(/g, 'Math.log(')
+        .replace(/log\(/g, 'Math.log10(')
+        .replace(/sqrt\(/g, 'Math.sqrt(')
+        .replace(/pi/g, 'Math.PI')
+        .replace(/(?<![a-zA-Z])e(?![a-zA-Z(])/g, 'Math.E')
+        .replace(/(\d+)!/g, 'factorial($1)');
+
+      // eslint-disable-next-line no-eval
+      let result = Function('"use strict"; const factorial=' + factorial.toString() + '; return (' + safe + ')')();
+      if (typeof result === 'number' && !isNaN(result)) {
+        document.getElementById('calc-result').textContent = Number(result.toFixed(10)).toString();
+        expr = String(result);
+      } else {
+        document.getElementById('calc-result').textContent = "Error";
+      }
+    }catch(e){
+      document.getElementById('calc-result').textContent = "Error";
+    }
+  }
+
+  document.addEventListener('keydown', function(e){
+    if(/[0-9+\-*/.()]/.test(e.key)){
+      calcFn(e.key);
+    } else if(e.key === 'Enter' || e.key === '='){
+      calcEquals();
+    } else if(e.key === 'Backspace'){
+      calcBack();
+    } else if(e.key === 'Escape'){
+      calcClear();
+    }
+  });
+</script>
+
+</body>
+</html>
